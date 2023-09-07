@@ -1,10 +1,14 @@
 <template>
   <div>{{ text }}</div>
+  <div>{{ baseMixinText }}</div>
 </template>
 
 <script>
+import base from "@/mixins/base";
+
 export default {
   name: "App",
+  mixins: [base],
   data() {
     return {
       text: "Hola Vue",
@@ -21,6 +25,7 @@ export default {
   },
 };
 </script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
