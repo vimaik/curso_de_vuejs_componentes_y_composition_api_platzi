@@ -1,27 +1,14 @@
 <template>
-  <div>{{ text }}</div>
-  <div>{{ baseMixinText }}</div>
+  <Home />
 </template>
 
 <script>
-import base from "@/mixins/base";
+import Home from "@/components/Home.vue";
 
 export default {
   name: "App",
-  mixins: [base],
-  data() {
-    return {
-      text: "Hola Vue",
-    };
-  },
-  beforeCreate() {
-    console.log("beforeCreate", this.$data, this.$el);
-  },
-  created() {
-    console.log("create", this.$data, this.$el);
-  },
-  mounted() {
-    console.log("mounted", this.$data, this.$el);
+  components: {
+    Home,
   },
 };
 </script>
