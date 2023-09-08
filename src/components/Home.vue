@@ -8,7 +8,7 @@
 <script>
 // ref >> Para definir variables reactivas de tipo primitivo, en Composition API, o sea, dentro de setup() {}' (CON uso de '.value')
 // reactive >> Para definir variables rectivascde tipo objeto, en Composition API, o sea, dentro de 'setup() {}'' (SIN uso de '.value')
-import { ref, reactive } from "vue";
+import { ref, reactive, watch } from "vue";
 
 export default {
   setup() {
@@ -26,6 +26,20 @@ export default {
     // para manipular las variables'
     setInterval(() => counter.value++, 1000);
     setInterval(() => obj.counter++, 500);
+
+    // watch' Recibe 2 parámetros: Primero la variable que quieres escuchar y segundo la función que se va a ejecutar cada vez que haya un cambio en el valor de la variable escuchada
+    // IMPORTANTE: Con 'reactive' la variable se pasa como return de una función, para eliminar el proxy que el Composition API de VueJS añade en la reactividad de objetos
+    watch(
+      () => obj.counter,
+      (valorActual, valorAnterior) => {
+        console.log("reactive: ", valorActual, valorAnterior);
+      }
+    );
+
+    // IMPORTANTE: Con 'ref' la variable se pasa tal cual ya que el Composition API de VueJS no añade ningún proxy en la reactividad de objetos
+    watch(counter, (valorActual, valorAnterior) => {
+      console.log("ref: ", valorActual, valorAnterior);
+    });
 
     // Para que estas variables reactivas del Composition API esten disponibles en el componente, se deben especificar en la funcion 'return {}'
     return {
