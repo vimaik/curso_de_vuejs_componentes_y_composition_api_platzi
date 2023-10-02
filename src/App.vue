@@ -1,5 +1,5 @@
 <template>
-  <Home first-name="Víctor" last-name="Muñoz"></Home>
+  <Home first-name="Víctor" last-name="Muñoz" unexpected-attr="valor1"></Home>
 </template>
 
 <script>
