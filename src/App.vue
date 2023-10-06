@@ -1,14 +1,24 @@
 <template>
-  <Home first-name="Víctor" last-name="Muñoz" unexpected-attr="valor1"></Home>
+  <Home
+    first-name="Víctor"
+    last-name="Muñoz García"
+    unexpected-attr="valor1"
+  ></Home>
 </template>
 
 <script>
 import Home from "@/components/Home.vue";
+import { provide } from "vue";
 
 export default {
   name: "App",
   components: {
     Home,
+  },
+  setup() {
+    // El segundo parámetro de 'provide' puede ser una constante, como aquí, o una variable
+    // reactiva definida mediante 'ref' o 'toRefs', por ejemplo
+    provide("username", "victor.munoz");
   },
 };
 </script>

@@ -1,9 +1,10 @@
 <template>
-  <div>{{ fullName }}</div>
+  <div>Full Name: {{ fullName }}</div>
+  <div>Username: {{ userName }}</div>
 </template>
 
 <script>
-import { toRefs, computed } from "vue";
+import { toRefs, computed, inject } from "vue";
 
 export default {
   props: {
@@ -27,6 +28,10 @@ export default {
       return `${firstName.value} ${lastName.value}`;
     });
 
+    // La función 'inject' devuelve un valor NO REACTIVO. Para convertirlo en uno
+    // deberías utilizar 'toRefs'
+    const userName = inject("username");
+
     console.log(attrs);
 
     // Para exponer atributos y funciones internos del componentes a otros componentes
@@ -36,6 +41,7 @@ export default {
 
     return {
       fullName,
+      userName,
     };
   },
 };
